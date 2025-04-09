@@ -1,0 +1,282 @@
+*************************************************************  JVM ARCHITECTURE  *****************************************************************************************
+
+1-Virtual Machine
+===================
+	-It is a Software Simulation of a Machine which can Perform Operations Like a Physical Machine.
+
+2-Types of VM 
+==============
+	-There are 2 Types of Virtual Machines
+	1) Hardware Based OR System Based Virtual Machines  (ex-KVM-karnal VM,KEN)
+	2) Software Based OR Application Based OR Process Based Virtual Machines
+
+1) Hardware Based OR System Based Virtual Machines
+------------------------
+	- It Provides Several Logical Systems on the Same Computer with Strong Isolation from Each Other.
+	- i.e an one physical machine we are define multiple logical machine 
+	- The main advantage of hard based Virtual machine is Hard resources sharing and improve utilization hard resources 
+	- EX: KVM (karnal base virtual machine,umwre ,Could computing  etc.......)
+
+Examples:
+--------
+1) KVM (Kernel Based Virtual Machine) for Linux Systems
+2) VMware (Virtual Machine ware)
+3) Xen
+4) Cloud Computing
+The main advantage of Hard-ware based Virtual Machines is for effective utilization
+of hard-ware resources.
+
+2) Software Based OR Application Based OR Process Based Virtual Machines
+-----------------------------
+	- These ge applications Acts as Runtime Engines to Run a Particular Programming
+
+Examples:
+---------
+1) JVM Acts as Runtime Engine to Run Java Applications
+2) PVM (Parrot VM) Acts as Runtime Engine to Run Scripting Languages Like PERL.
+3) CLR (Common Language Runtime) Acts as Runtime Engine to Run Net Based Applications.
+
+3- Basic diagram of JVM
+========================
+- JVM is the part of the JRE and it is the responsible to load and run java class files
+
+(Module - 1)
+4- Class Loader System ---
+	1- Loading
+	2- Linking
+		• Verification
+			- it is the process of ensure that binary representation of class is structurally correct or not i.e. JVM will check whether the .class file is generate by valid compiler or not i.e whether .class file properly format or not.
+			- internally bytecode verifier is responsive for this activity.
+			- bytecode is the part of class loader sub system.
+			- if verification fail we will get run time say "java.lang.vrifyError".
+		• Preparation
+			- In this phase JVM will allocate memory for class level static variable and assign default values
+			- Note - in initialization phase original values are assign to the static variable and here only we be assigned.
+		• Resolution
+			- it is the process of replace symbolic in your program with the original memory refence from method area 
+			- For the above class loader loads test.class, String.class, Student.class and Object.class
+			- The name of these classes stored in constant poll of test class
+			- In resolution phase These name are replace with original memory level reference from method area
+	3- Initialization
+		- In this static variable are assign with origin value and static blocks will be executed from parent to child and from Top to Bottom 
+
+	Note - While loading linking initialization any error occur then we will get run time exception - java.lang.linkageError
+
+5- Types of Class Loader 
+	1- Bootstrap CL 
+		- It is responsible to load core java API classes that the class represent in jrt-fs.
+		- It is responsible to load the class path from Bootstrap class path
+		- Bootstrap class loader is by default available with every JVM.
+		- it store of fetch the jrt-fs.jar file
+		- jrt-fs.jar is nothing but it the collection of predefine classes like String.class , Integer.class etc....
+		- Path is C:\Program Files\Java\jdk-18.0.2.1\lib
+		- It is a native language which is not implement in java it is implement in c/c++ (due this when you call the class it show null)
+	2- Platform CL (Extension)
+		- it is the child of Bootstrap class loader 
+		- It is responsible to load the class from Extension class path ( C:\Program Files\Java\jdk-18.0.2.1\lib\ext\ *.jar)
+		- It is stored the ext file class
+		- It is implement in java and corresponding .class file is sun.misc.Luncher$ExtClassLoader
+	3- Application CL
+		- it is the child of Extension class loader.
+		- this class loader is responsible from to load classes from application class path
+		- it internally uses environment class path
+		- it load the file from application class path
+		- Means it loaded the user define class path
+		- It is implement in java  and corresponding .class file is sun.misc.Luncher$AppClassLoader
+
+6- How java class loader work ?
+1.	Class Loader follows Delegation Hierarchy Principle.
+2.	Whenever JVM come across a Particular Class, First it will Check whether the corresponding Class is already loaded or Not.
+3.    	If it is already loaded in Method Area then JVM will use that loaded Class.
+4.	If it is not already loaded then JVM Requests Class Loader Sub System to load that Particular Class, then Class Loader Sub System Handovers the Request to Application Class Loader.
+5.	Application Class Loader delegates Request to Extension Class Loader and Extension Class Loader in turn delegates to Boot Strap Class Loader.
+6.	Boot Strap Class Loader searches in Boot Strap Class Path (JDK/ JRE/Lib). If the specified Class is available then it will be loaded. Otherwise Boot Strap Class Loader delegates the Request to Extension Class Loader.
+7.	Extension Class Loader will searches in Extension Class Path (UDK/ JRE/Lib/Ext). If the specified Class is available then it will be loaded. Otherwise it delegates the Request to Application Class.
+8.	Application Class Loader will searches in Extension Class Path. if the specified Class is available then it will be loaded otherwise we will get ERROR : ClassNotFoundException
+
+
+7- Need of Customizer class loader ?
+	- We can define our own customizer class loader by extending java.lang.classLoader class .
+	- Default class loader will load .class file only once even though we are used multiple time that class in your program
+	- After loading .class file if it is modify outside then default class want load updated version of class file(because .class file already available in method).
+	- We can resolve this problem by define our own customizer class loader.
+	- The main advantage of customizer class is we can control class loading mechanism based on our requirement .
+	- EX : We can load .class file separately every time so that updated version available to our program.
+	- Sometimes we may not satisfy with default class loaders and with default class loading mechanism.
+
+8- Pseudo Code to define Customizer class ?
+
+(Module - 2)
+9- Various Memory area of JVM ----
+	- When ever JVM load and run a java program it need's memory to stored several things like bytecode ,variable etc....
+	- Totally memory are divide into following 5 types
+		i- Method Area
+		ii- Heap area
+		iii- Stack area
+		iv- PC register
+		v- Native method stack
+i- Method Area
+	- For every jvm one method area will be available 
+	- Method area will be create at the time of JVM startup
+	- Inside method area class level binary data including static variable will be stored.
+	- Constant polls of a class will be stored inside method area.
+	- Method area can be access by multiple thread simultaneous
+	- So method area data need not be continues
+ii- Heap area
+	- For every JVM one heap area is available 
+	- Heap area will be create at time of JVM Startup
+	- Object and corresponding instance variable will be stored in the HEAP area
+	- Every array in java is object only hence Array also stored in the heap area
+	- It can be access be multiple thread and hence the data stored in the heap memory is a not Thread SAFE.
+	- Heap area need not be continues. 
+
+QNS - WAP to display heap memory statistic?
+public class HeapDemo {
+    public static void main(String[] args) {
+        double mb = 1024*1024;
+        Runtime r = Runtime.getRuntime();
+        System.out.println("Max Memory "+r.maxMemory()/mb);
+        System.out.println("Total Memory "+r.totalMemory()/mb);
+        System.out.println("Free Memory "+r.freeMemory()/mb);
+        System.out.println("Consumed Memory "+(r.totalMemory()-r.freeMemory())/mb);
+    }
+}
+Output in Byte
+Max Memory 4208984064
+Total Memory 264241152
+Free Memory 258528656
+Consumed Memory 5712496
+
+	- a Java application can communicate with JVM by using runtime object 
+	- Runtime class present in java.lang package and it is a singleton class
+	- We can create run time object as follow 
+		Runtime r = Runtime.getRuntime()
+	- Once we got runtime object we can call the follow method from that object 
+		1 - Max Memory
+			- It return the Number of byte of max memory allocated in HEAP 
+		2 - Total Memory
+			- It return number of byte of total memory allocated to the heap(initially memory) 
+		3- Free Memory
+			- It return number of byte of free memory present in the heap 
+	** How to Set maximum And Minimum Heap Sizes 
+		- Heap memory is Fixed (Finite Memory) but based on our requirement maximum and minimum heap sizes i.e we can increase and decrease the heap size based on the requirement
+		- We can use follow flags with following command 
+			=> java -Xmx(size)m ClassName (Max Memory) 
+			   EX - java -Xmx521m HeapDemo --> this command will set maximum heap as 512MB 
+			=> java -Xms(size)m ClassName (Min Memory)
+			   EX - java -Xms64m HeapDemo --> this command will set minimum heap as 64MB 
+			=> Java -Xmx512m —Xms64m HeapDemo
+			output - Max Memory : 494.9375
+				 Total Memory : 61.875
+				 Free Memory : 61.192176818847656
+				 consumed Memory : O.6828231811523438
+
+iii- Stack area
+	- For every thread JVM will create a separate stack at the time of thread creation
+	- each and every method call performed by that thread will be stored in the stack including local variable also.
+	- After completing a method the corresponding from the stack will be removed after completing all method call the stack will become empty under that empty stack will destroy by the jvm just before terminating thread.
+	- each entry in the stack is called stack frame are activation record. 
+	- The data stored in the stack is available for only for corresponding thread under not available to the remaining thread hence this data is thread safe.
+	- Stack Memory are divided into 3 part 
+		1 - Local variable array
+		2 - Operand Stack (Work Space)
+		3 - Frame Data (Exception are store)
+1 - Local variable array
+	- It contains all parameter and local variable of the method.
+	- Each slot in the array is of 4 bytes .
+	- Values of types int , float and refence occupied one entry in the array.
+	- values of double and long occupied 2 conjugating entry in the array.
+	- Byte shot and char values will be converted to int type before storing and occupying one slot.
+	- But the way of storing Boolean values is valid from JVM to JVM but most of the JVM follow one slot for Boolean values
+2 - Operand Stack (Work Space)
+	- JVM uses Operand Stack (Work Space) 
+	- Some instruction can push the values Operand Stack and some instruction can pop the values from Operand Stack and some instruction can perform required operation.
+	- It stored actually all operation. (means all intermediate value of operation)
+3 - Frame Data (Exception are store)
+	- Frame data contains all symbolic reference related to that method
+	- It also contains a reference to Exception table which provide corresponding catch block exception in the case on exception.
+	- It stored also constant poll.
+
+iv- PC register
+	- PC stand for Program Counter Register.
+	- For every thread a separate PC register will be created at the time of thread creation.
+	- PC register contains the address of current executing instruction.
+	- Once Instruction execution complete automatically PC register incremented to hold address of next instruction.
+
+v- Native method stack
+	- For every thread JVM will create a separated native method stack.
+	- All native method call invoked by the thread by the thread will be stored in the corresponding native method stack.
+
+	NOTE ---- Method area ,Heap area and Stack Area are consider as important memory area with respect to programmer.
+		- Method area and Heap area are per JVM.
+		- Where as Stack area , PC register and Native Method Stack are per Thread.	
+		- Static variable will be stored in Method Area.
+		- Instance variable will stored in Heap Area.
+		- Local variable will stored in stack Area.
+
+10- Program to display heap memory statistics? (Runtime object)
+public class Location {
+    Student s1 = new Student ();
+    static Student s2 = new Student ();
+
+    public static void main (String [] args) {
+        Location L = new Location ();
+        Student s3 = new Student ();
+    }
+}
+
+
+11- How to Set  Maximum and minimum Heap size? 
+public class HeapDemo {
+    public static void main(String[] args) {
+        double mb = 1024*1024;
+        Runtime r = Runtime.getRuntime();
+        System.out.println("Max Memory "+r.maxMemory()/mb);
+        System.out.println("Total Memory "+r.totalMemory()/mb);
+        System.out.println("Free Memory "+r.freeMemory()/mb);
+        System.out.println("Consumed Memory "+(r.totalMemory()-r.freeMemory())/mb);
+    }
+}
+Output –
+Max Memory 4208984064
+Total Memory 264241152
+Free Memory 258528656
+Consumed Memory 5712496
+
+
+(Module - 3)
+12- Executer Engine ---
+	- This is the central component of JVM .
+	- Execution Engine is responsible for execute the java class file.
+	- Execution Engine mainly contain 2 component.
+		i- Interpreter 
+		ii- JIT compiler
+i- Interpreter 
+	- It is the responsible to read byte code and Interpreted into machine code (native code) and execute that machine code line by line.
+	- the problem with Interpreted with it Interpreted every time even same method invoke multiple time which reduce performance of the system.
+	- To overcome this problem sum people introduce JIT compiler.
+ii- JIT compiler
+	- The main prepose of JIT Compiler is to improve performance internally JIT compiler maintained a separate count for every method .
+	- When ever JVM across any method call first that method will be Interpreted by the Interpreted and JIT compiler increment corresponding count variable.
+	- This process will continue for every method.
+	- Once if any method count reaches thresh hold value then JIT compiler identify that, The method is a repeatedly (Hot spot) used method and such type of method call Hot spot.
+	- immediately JIT complier  that method and generate the corresponding native code .
+	- Next time JVM come across that method call then JVM uses native code directly and the execute it's instated of interpreting once again so that performance of the system will improve.
+	- The thresh hold count varies from JVM to JVM 	
+	- Some advanced JIT compiler will re-compile generated native code if count reaches thresh hold value second time so that more optimised machine code will generate.
+	- Internally "Profiler", Which is the part of JIT compiler is responsible to identify HOT SPOT. 
+
+NOTE ---- JVM interprets total program at lest once.
+	- JIT compiler is applicable only for repeatedly require method not for every method.
+
+13-  Java native Interface (JNI)
+	- JNI acts as mediator for java method calls and corresponding native libraries i.e. JNI is responsible to provide information about native libraries to the JVM.
+	- native method libraries provide or hold native libraries information.
+
+14- Complete architecture diagram of JVM
+
+(Module - 4)
+15- Class file structure
+	i- Magic Number
+	ii- Minor Version
+	iii- Major Version

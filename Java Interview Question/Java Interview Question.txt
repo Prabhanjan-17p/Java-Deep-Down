@@ -1,0 +1,179 @@
+Java Interview Question
+--------------------------
+1- Polymorphism In java?
+	-Same Object having different behaviour it is called as Polymorphism.
+	- It is a Greek word Which Poly means MANY and morphism means FORM.-
+	- we can achieve Polymorphism in 2 way 
+		1- Compile time Polymorphism.
+		2- Run time Polymorphism.
+
+2- Reversed a String not used build in function?
+
+3- What is the use of static keyword?
+
+4- WAP to show a static variable or method and used it in?
+
+5- Nested classes in java?
+
+6- What is main() in java ?
+
+7- What is Abstraction in java?
+
+8- What is Constructor in java?
+
+9- What is encapsulation in java?
+	-
+
+10- What is Singleton Class in java?
+	-For any java Class if we are allowed to create only one object for this class such type of class called Singleton Class.
+	EX - Runtime, BusinessDelligate, ServiceLocator etc.......
+
+11- What is JAVA?
+	- Java is a high-level, robust, secure, and object-oriented programming language developed by Sun Microsystems (now owned by Oracle).
+	- Java is a object oriented programming language that is used in distributed environment on the internet.
+	- It is a high level language i.e. it is easy to read and understanding.
+	- It is platform-independent because of the Java Virtual Machine (JVM), enabling programs to run on any operating system.
+	- Key Feature: Write Once, Run Anywhere (WORA).
+
+12- Features of Java?
+	1. Simple Syntax
+	2. Object Oriented
+	3. Platform Independent
+	4. Interpreted
+	5. Scalable
+	6. Portable
+	7. Secured and Robust
+	8. Memory Management
+	9. High Performance
+	10. Multithreading
+	12. Functional Programming Features
+
+13- Compile time constant ?
+	- A compile time constant is a constant that is evaluated and replaced with its value at compile time rather than runtime.
+	- It must be declared with static and final modifier as well as initialized with constant expression. (Must not be initialized by static method call)
+
+14- Method Overriding ?
+	- Writing two or more non static methods in super and sub class in such a way that method name along with method parameter (Method Signature) must be same as well as return type must be compactable is called Method Overriding.
+	- The advantage of Method Overriding is, each sub class is specifying its own specific behavior.
+
+15- Upcasting?
+	- It is possible to assign sub class object to super class reference variable (up) using dynamic polymorphism. It is known as Upcasting.
+
+16 - Downcasting ?
+	- Downcasting is not possible without upcasting.
+	- It is not possible in java to assign super class object to sub class reference variable. [java.lang.ClassCastException]
+	- Downcasting is a process to assign sub class object to sub class reference variable by using Super class reference.
+
+17- Method Overloading ?
+	- Writing two or more methods in the super and sub class in such a way that method name must be same but argument must be different.	
+
+18- Static Polymorphism ?
+	- The polymorphism which exist at the time of compilation is called Static OR compile time polymorphism.
+	- In static polymorphism, compiler has very good idea that which method is invoked depending upon METHOD PARAMETER.
+	- Here the binding of the method is done at compilation time so, it is known as early binding.
+	- We can achieve static polymorphism by using Method Overloading concept.
+
+19- Dynamic Polymorphism ?
+	- The polymorphism which exist at runtime is called Dynamic polymorphim Or Runtime Polymorphism.
+	- *Here compiler does not have any idea about method calling, at runtime JVM will decide which method will be invoked depending upon CLASS TYPE OBJECT.
+	- Here method binding is done at runtime so, it is also called Late Binding.
+	- We can achieve dynamic polymorphism by using Method Overriding. 
+
+20- What is Co-Variant in java?
+	- While overriding a method, return type must be compaitable. Java software people has provided a concept called Co-Variant through which by using Inheritance relation we have make return type as compaitable.
+	- In a single statement Co-Variant is, If we are able to assign sub class method return type Object to super class method return type Object then it is called Co-Variant.
+	- If a Super class method return type is sub-class object then it called as Co-Variant.
+
+21- Method hiding In java?
+	- As we know we can achieve method overriding with non static method where as Methdo hiding is only possible with static method.
+
+22- What is instanceof Operator in java?
+	- It is a relational operator as well as keyword.
+	- It return true/false.
+	- It is mainly used to verify whether a reference variable is pointing to a particular type of Object or not ?
+
+23- Why you can't Override a static method with non-static Method?
+	- We can't override static method with non static method because static method belongs to class where as non static method belongs to Object.
+	- If we try to override then we will get an error "Overridden method is static".
+
+24- In Java Where this are executed Static Variable, Non Static Variable  and Static Method?
+	- It is always executes from current reference.
+
+25- What is Final Key word in java?
+	- It is used to provide some kind of restriction in our program.
+	- We can use final keyword in ways 3 ways in java.
+		1) To declare a class as a final. (Inheritance is not possible)
+		2) To declare a method as a final (Overriding is not possible)
+		3) To declare a variable (Field) as a final (Re-assignment is not possible) 
+
+26- What is Sealed class in Java ?
+	- It is an improvement over final keyword.
+	- It is similar to final keyword with less restriction because here we can permit the classes to extend from the original Sealed class.
+	- The class which is inheriting from the sealed class must be final, sealed or non-sealed.
+	- The sealed class must have at least one sub class.
+
+27- What is the difference between JDK and JRE, JVM and JIT Compiler?
+JDK - 
+==========
+	- To developed and run the java application the required environment is JDK.
+	- It is used in developer side part.
+JRE -
+==========
+	- Only run or Just to run the java application the required environment is JRE.
+	- It is used in Client Side part.
+JVM -	
+==========
+	- JVM is an interpreter which is responsible to run code line by line.
+
+NOTE -  JDK = JRE + Development Tools OR JRE = JVM + Library class
+
+28 - What is Java Virtual Machine (JVM)
+	- JVM is a virtual machine that enables the execution of Java bytecode.
+	- The JVM acts as an interpreter between the Java programming language and the underlying hardware.
+	- JVM is an interpreter which is responsible to run code line by line.
+
+29- What is JIT compiler?
+	- The main prepose of JIT Compiler is to improve performance internally JIT compiler maintained a separate count for every method.
+	- Whenever JVM across any method call first that method will be Interpreted by the Interpreted and JIT compiler increment corresponding count variable.
+	- JIT compiler is applicable only for repeatedly require method not for every method.
+
+30- What Value is Returned by a Constructor in Java?
+	- A constructor in Java does not return any value explicitly, but it returns the current instance of the class (i.e., the object itself) when it is called.
+
+31- Explain the concept of Inheritance?
+	- Inheritance is a mechanism in Object-Oriented Programming (OOP) that allows a child class (subclass) to acquire the properties (fields) and behaviors (methods) of a parent class (superclass).
+
+34- Difference Between Abstract class and interface ?
+
+35- What variable are used in  Abstract class and interface?
+
+36- Multiple inheritance possible?
+
+37- What is super key word in java?
+
+38- What is this key word in java?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
