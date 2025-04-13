@@ -1,0 +1,42 @@
+To create jar file
+------------------------
+jar cf NIT.jar  .
+	=> to create a jar file. 
+
+jar cvf NIT.jar  .
+	=> to create a jar file with showing details of file. 
+
+To see the content of jar file
+---------------------------------
+jar tvf NIT.jar
+	=> to see the all file are under the NIT jar file.
+
+To add new file to existing jar file
+-------------------------------------
+jar uvf NIT.jar c.txt
+	=> adding a new file to existing jar file.
+
+To extract specific file from jar file
+-----------------------------------------
+jar xvf NIT.jar c.txt
+	=> to extract specific file from jar file.
+
+To extract all the files from jar file
+---------------------------------------------
+jar xvf NIT.jar
+
+How to run multiple File at a time 
+-----------------------------------
+	1- Create a bat file 
+	2- Then go to the "bat" extension location and open cmd
+	3- run the cmd as run the file name.
+ex------
+	Under the bat file code are 
+		- cd D:\JAVA DEEP DOWN\Adv Java\Basic Intro\Note\PathDemo
+		- d:
+		- javac TestApp.java
+		- java TestApp
+
+
+
+

@@ -877,4 +877,9 @@ TreeSet
 
 		Diagram(09-04-2025)
 
-*****
+		-Map is "not child interface of collection".
+		-If we want represent a group of object as key-value pair then we should go for Map.
+		Diagram (09-04-2025)
+		-Both keys and values are objects only.
+		-Duplicate keys are not allowed but values can be duplicated.
+		-Each key-value pair is called entry  hence map is consider as , a collection of entry  objects.

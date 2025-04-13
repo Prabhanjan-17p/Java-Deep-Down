@@ -22,7 +22,7 @@ Java Interview Question
 8- What is Constructor in java?
 
 9- What is encapsulation in java?
-	-
+	-Archive the private data using public method like getter and setter.
 
 10- What is Singleton Class in java?
 	-For any java Class if we are allowed to create only one object for this class such type of class called Singleton Class.
@@ -153,8 +153,24 @@ NOTE -  JDK = JRE + Development Tools OR JRE = JVM + Library class
 
 38- What is this key word in java?
 
+39- What is Anonymous inner class?
+	-If we declare a class "inside a method body" without any class name then it is called Anonymous inner class.
+	-The main purpose of anonymous inner class to extend a super class or to implement an interface that means for creating sub type. 
+	-Anonymous inner class declaration and Object creation by using new keyword both will be done in a single line i.e single statement.
 
+40- What is Interface in java?
+	-An interface is a keyword in java which is similar to a class which defines working functionality of a class.
+	-Upto JDK 1.7 an interface contains only abstract methods that means there is a guarantee that inside an interfcae we don't have concrete or general or instance methods.
 
+41- What is Loose Coupling & Tightly coupled in java?
+	-Loose Coupling :- If the degree of dependency from one class object to another class is very low then it is called loose coupling. [interface is reqd]
+	-Tightly coupled :- If the degree of dependency of one class to another class is very high then it is called Tightly coupled.
+
+42- Why they allowed to write method body inside an interface ?
+	-The basic problem OR limitation with abstract method is, It must be implemented in all the implementer (sub) classes otherwise the implementer class will become as an abstract class.
+	-It leads to big problem for industry because, If we want to add any new feature(new abstract method) to the existing interface then it must be overridden in the sub class, whether it is required OR not required ?
+
+== SELECT * FROM EMP ORDER BY SAL DESC OFFSET 2 ROWS FETCH NEXT 1 ROWS ONLY;
 
 
 
