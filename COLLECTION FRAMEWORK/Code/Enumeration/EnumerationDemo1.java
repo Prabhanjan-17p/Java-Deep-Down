@@ -24,3 +24,4 @@ public class EnumerationDemo1 {
         System.out.println(v); // [2, 4, 6, 8, 10]
     }
 }
+

@@ -883,3 +883,237 @@ TreeSet
 		-Both keys and values are objects only.
 		-Duplicate keys are not allowed but values can be duplicated.
 		-Each key-value pair is called entry  hence map is consider as , a collection of entry  objects.
+
+
+		ALL method
+		-----------
+			Object put(Object key, Object value)
+				-To add one key value pair to the map.
+				-If the key is already present then old value will be replaceed with new value and returns old value.
+				EX - m.put(101,"kanha");
+				     m.put(102,"Pravu");
+				     m.put(101,"Hero");
+					 -> kanha got replaceed with Hero.
+
+			void putAll()
+
+			Object get(Object key)
+				-returns the values associated with specified key.
+
+			Object remove(Object key)
+				-removes the entry associated with specified key.
+
+			boolean containsKey(Object key)
+
+			boolean containsValue(Object value)
+
+			boolean isEmpty()
+
+			int size()
+
+			void clear();
+				-All key value pair will be removed.
+
+			Set keySet()
+			Collection values()
+			set entrySet()
+				-The above 3 method are called as collection views of map.
+
+*** Entry (I)
+----------------
+		-A map is a group of key value Pairs and each key value pair is called an entry hence map is consider as a collection of entry objects.
+		-Without existing map object there is no chance of existing entry object hence entry interface is define inside map interface.
+		Ex-
+		interface  map{
+			-------
+			-------
+			-------
+		    interface  entry{
+		        Object getKeys();                 |      
+		        Object getValue();                | -> These 3 methods are entry specific methods and we can apply only on Entry Object
+		        Object setValue(Object newValue); |
+		    }
+		}
+
+***** HashMap
+----------------
+		-The underline data structure is HashTable.
+		-Insertion order is not preserved and it is based on hashCode of keys.
+		-Duplicate keys are anot allowed but values can be duplicated.
+		-Heterogeneous Object are allowed for both key and value.
+		-Null is allowed for key(Only once)
+		-Null is allowed for values(Any number of time)
+		-HashMap implement serializable and clonable interface but not RandomAccess.
+		-HashMap is the best choice if our frequent operation is search operation.
+
+		Constructor
+		----------
+			HashMap h = new HashMap()
+				-Creates an empty HashMap object with default initialCapacity 16 and default fillRatio 0.75.
+
+			HashMap h = new HashMap(int initialCapacity)
+				-Creates an empty HashMap objects with specified initialCapacity and default fillRatio 0.75.
+
+			HashMap h = new HashMap(int initialCapacity, float fillRatio)
+
+			HashMap h = new HashMap(map m)
+
+***** Difference between HashMap and HashTable
+----------------------------------------------
+HashMap
+-------
+		-Every method present in HashMap is Not-Synchronized
+		-At a time multiple Thread are allowed to operate on HashMap object and hence it not thread safe.
+		-Relatively performance is High because thread are not required to wait to operate on HashMap Object.
+		-NULL is allowed for both key and value.
+		-Introduced in 1.2v and it is not Legacy.
+
+HashTable
+---------
+		-Every method present in HashMap is Synchronized
+		-At a time only one Thread is allowed to operate on HashTable object and hence it thread safe.
+		-Relatively performance is low because thread are required to wait to operate on HashTable object.
+		-Null is not allowed for key and value otherwise we will get NullPointerException.
+		-Introduced in 1.0v and it Legacy.
+
+
+***** How to get Synchronized version of HashMap Object
+---------------------------------------------------------
+		-By default HashMap is Non-Synchronized but we can get Synchronized version of HashMap by using Synchronized Map Method of Collection Class.
+		Ex -
+		HashMap m = new HashMap();
+		Map m1 = Collections.synchronizedMap(m);
+		Note ----> m is not-Synchronized but m1 is Synchronized 
+
+***** LinkedHashMap
+----------------------
+		-It is the child class of HashMap.
+		-It is exactly same as HashMap(including methods and Constructors except the following difference)
+
+		HashMap
+		-------
+			-The underline data structure is HashTable.
+			-Insertion order is not preserved and it is based on hashCode of keys.
+			-Introduced in 1.2v
+
+		LinkedHashMap
+		--------------
+			-The underline data structure is the combination of LinkedList and HashTable(Hybrid data structure).
+			-Insertion order is preserved.
+			-Introduced in 1.4v
+
+		EX-
+		LinkedHashMap m = new LinkedHashMap();
+        m.put("kanha",700);
+        m.put("Pravu",500);
+        m.put("Dibya",200);
+        m.put("Danu",500);
+        System.out.println(m); //{kanha=700, Pravu=500, Dibya=200, Danu=500}
+
+		-In the above program say that in LinkedHashMap the Insertion order is preserved.
+
+		NOTE --> LinkedHashSet and LinkedHashMap are commonlly used for developing cache based application.
+
+***** Difference between == operator and .equals()
+---------------------------------------------------
+		-In general == operators maint for reference comparesion (Address Comparision) where as .equals() maint for content Comparision.
+		Ex-
+		// if i1 and i2 in the range of 1 to 127 then it will show true for all the case. 
+        Integer i1 = 1200;
+        Integer i2 = 1200;
+        System.out.println(i1 == i2); // it return false because of it check the reference not value
+        System.out.println(i1.equals(i2)); // it return true because of it check value not reference
+
+***** IdentityHashMap
+----------------------
+		-It is exactly same as HashMap(including methods and Constructor ) except the following difference.
+		-In the case of normal HashMap JVM will used .equals method to identify the duplicate key which is maint for content comparesion but in the case if IdentityHashMap JVM will used == operators to identify the Duplicate key which is maint for reference comparesion(Address comparesion).
+		Ex -
+
+		Integer i1 = 1222;
+        Integer i2 = 1222;
+
+        HashMap m = new HashMap(); // HashMap
+        m.put(i1,"kanha");
+        m.put(i2,"Pravu");
+        System.out.println(m);	// {1222=Pravu}	
+
+		-->i1 and i2 are duplicate key because i1.equals(i2) return true.
+		-If we replace HashMap with IdentityHashMap Then i1 and i2 are not duplicate case because i1 == i2 return false.
+
+		IdentityHashMap m = new IdentityHashMap(); // IdentityHashMap
+        m.put(i1,"kanha");
+        m.put(i2,"Pravu");
+        System.out.println(m);	// {1222=Pravu, 1222=kanha}
+
+***** WeakHashMap
+------------------
+		-It is exactly same as HashMap except the following difference.
+		-In the case of HashMap eventhough Object doesnot have any reference it is not elisible for GC(garbeg Collector) if it is associated with HashMap i.e. HashMap dominate GC(garbeg Collector)
+		-But in the case of WeakHashMap if object does not contain any reference it is elisible for GC(garbeg Collector) eventhough object associated with WeakHashMap i.e. GC(garbeg Collector) dominate WeakHashMap
+
+		EX-
+ 		HashMap h = new HashMap();  //{temp=kanha} {temp=kanha}
+        Temp t = new Temp(); // it is a BLC class , In this class 2 Method are Override these are toString() & finalize()
+        h.put(t,"kanha");
+        System.out.println(h);
+        t = null;
+        System.gc(); // To call Garbage collector to clean non-reference object
+        Thread.sleep(3000);
+        System.out.println(h);  
+
+		-In the above example temp object not elisible for GC because it is associated with HashMap.
+		-In this case Output is 
+			-{temp=kanha}
+			-{temp=kanha}
+
+		EX-
+        WeakHashMap h = new WeakHashMap();  //{temp=kanha} {}
+        Temp t = new Temp(); // it is a BLC class , In this class 2 Method are Override these are toString() & finalize()
+        h.put(t,"kanha");
+        System.out.println(h);
+        t = null;
+        System.gc(); // To call Garbage collector to clean non-reference object
+        Thread.sleep(3000);
+        System.out.println(h);  
+
+		-In the above program we replace HashMap with WeakHashMap Then temp object elisible for GC(garbeg Collector)
+		-In this case output is 
+			-{temp=kanha}
+			-It Executed when Garbage Collectors Clean the temp Object
+			-{} 
+
+***** SortedMap
+------------------
+		-It is the child interface of Map.
+		-If you want represent a group of key value pair according to some sorting order for key then we should go for SortedMap.
+		-Sorting is based on the key but not based in value.
+		-SortedMap defines the following specific methods.
+		
+		ALL method
+		-----------
+			-Object firstKey();
+			-Object lastKey();
+			-SortedMap headMap(Object key)
+			-SortedMap tailMap(Object key)
+			-SortedMap subMap(Object keyl,Object key2)
+			-Comparator comparator()
+		
+		EX-
+		101 -> A
+        103 -> B
+        104 -> C
+        107 -> D
+        125 -> E
+        136 -> F
+
+        firstKey() --> 101
+        lastKey() --> 136
+        headMap(107) --> {101=A,103=B,104=C}
+        tailMap(107) --> {107=D,125=E,136=F}
+        subMap(103,125) --> {103=B,104=C,107=D}
+        comparator() --> null (due to default Ascending order apply then it return null)
+
+***** TreeMap
+---------------
+		
