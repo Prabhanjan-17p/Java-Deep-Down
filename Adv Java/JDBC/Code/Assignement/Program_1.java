@@ -19,7 +19,7 @@ public class Program_1 {
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","MYDB","MYDB");
 			Statement stm = con.createStatement();
 			ResultSet res = stm.executeQuery("select * from Product45 where PCODE = '"+pCode+"'");
-			
+
 			if (res.next() == false) {
 				throw new InvalidPCODE("Please provide a valid code!!!");
 			}
