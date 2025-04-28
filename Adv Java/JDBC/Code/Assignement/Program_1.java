@@ -31,7 +31,6 @@ public class Program_1 {
 			res.close();
 			stm.close();
 			con.close();
-//			sc.close();
 		} catch (Exception e) {
 			 System.err.println(e.getMessage());
 		}
