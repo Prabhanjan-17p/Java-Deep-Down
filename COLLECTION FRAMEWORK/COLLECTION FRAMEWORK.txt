@@ -1116,4 +1116,55 @@ HashTable
 
 ***** TreeMap
 ---------------
-		
+		-The underline Data structure is RED-BLACK tree.
+		-insertion Order is not preserved and it is based on some sorting order of Key.
+		-Duplicate key are not allowed but values can be duplicated.
+		-If we are depending on default natural sorting order then keys should be homogeneous and comparable otherwise we will get runtime exception saying classCastExecption.
+		-If we are defining our own sorting by comparator then keys need not be homogeneous and comparable we can take Heterogeneous non-comparable object also.
+		-Wheather we are deppending on default natural sorting order are costumizer sorting order there are no restrection for value we can take Heterogeneous non-comparable object also.
+
+		*** Null Acceptance
+		--------------------
+			1-For non empty TreeMap if we are trying to insert an entry with null key then we will get runtime exception saying NullPointerException.
+			2-For empty TreeMap at the first Entry with null key is allowed but after inserting that entry if we are trying to insert any other entry then we will get runtime exception saying NullPointerException.
+
+			NOTE --> The above null Acceptance role applicable until 1.6v only from 1.7v on ownword Null is not allowed for key. but for value null used any of time there is no restrection Wheather it is 1.6v or 1.7v.
+
+		Constructor
+		------------
+			-TreeMap t = new TreeMap()
+				- For default natural sorting order.
+			-TreeMap t = new TreeMap(Comaparetor c)
+				- For customized sorting order.
+			-TreeMap t = new TreeMap(SortedMap s)
+			-TreeMap t = new TreeMap(Map m)
+
+		Ex- of default natural sorting order
+		TreeMap t = new TreeMap();
+        t.put(100,"kanha");
+        t.put(103,"ZZZ");
+        t.put(101,"XXX");
+        t.put(106,123);
+		// t.put("FFFF","CCX"); // ClassCastException
+		// t.put(null,"NPX"); //NullPointerException
+        System.out.println(t); //{100=kanha, 101=XXX, 103=ZZZ, 106=123}
+
+		Ex - For Customize sorting order
+		public class CustomizedSortingOrderTreeMapDemo1 {
+			public static void main(String[] args) {
+				TreeMap t = new TreeMap(new MyComparator());
+				t.put("AAA",123);
+				t.put("XXX",456);
+				t.put("LLL",789);
+				t.put("ZZZ","kanha");
+				System.out.println(t); //{ZZZ=kanha, XXX=456, LLL=789, AAA=123}
+			}
+		}
+		class  MyComparator implements Comparator {
+			@Override
+			public int compare(Object obj1, Object obj2) {
+				String str1 = (String) obj1;
+				String str2 = (String) obj2;
+				return str2.compareTo(str1);
+			}
+		}
