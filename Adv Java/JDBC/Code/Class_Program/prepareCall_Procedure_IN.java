@@ -6,7 +6,7 @@ import java.util.Scanner;
 The main purpose of using {CallableStatement cs = con.prepareCall("{call CreateAccount45(?,?,?,?,?,?,?)}");} at a time we can insert 1 or 2 or more table data
  */
 
-public class prepareCall_Query {
+public class prepareCall_Procedure_IN {
     public static void main(String[] args) {
         try{
             Scanner sc = new Scanner(System.in);
