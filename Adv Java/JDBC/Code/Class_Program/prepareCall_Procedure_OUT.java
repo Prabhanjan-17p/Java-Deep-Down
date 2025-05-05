@@ -65,7 +65,7 @@ public class prepareCall_Procedure_OUT {
             long acNo = Long.parseLong(sc.nextLine());
 
             Connection con = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:1521/orcl", "MYDB", "MYDB"
+                    "jdbc:oracle:thin:@localhost:1521:orcl", "MYDB", "MYDB"
             );
 
             // Assuming 7 parameters: 1 IN (accno), 6 OUT

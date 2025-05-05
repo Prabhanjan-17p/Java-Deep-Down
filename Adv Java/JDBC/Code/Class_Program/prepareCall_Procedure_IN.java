@@ -25,7 +25,7 @@ public class prepareCall_Procedure_IN {
             System.out.println("Enter the AC Mobile Number: ");
             long acMob = Long.parseLong(sc.nextLine());
 
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/orcl", "MYDB", "MYDB");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "MYDB", "MYDB");
             CallableStatement cs = con.prepareCall("{call CreateAccount45(?,?,?,?,?,?,?)}");
 
             cs.setLong(1,acno);

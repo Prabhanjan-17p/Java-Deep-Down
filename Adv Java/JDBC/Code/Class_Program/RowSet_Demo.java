@@ -1,6 +1,11 @@
 package Class_Program;
 
 import javax.sql.RowSet;
+import javax.sql.rowset.CachedRowSet;
+import javax.sql.rowset.JdbcRowSet;
+import javax.sql.rowset.RowSetFactory;
+import javax.sql.rowset.RowSetProvider;
+import java.util.Scanner;
 
 /*
 ** Define 'RowSet' ?
@@ -8,8 +13,8 @@ import javax.sql.RowSet;
         => RowSet is an interface from 'javax.sql' package and which is extends 'java.sql.ResultSet' interface.
 
 Following are the interfaces extended from RowSet:
-    (a) JDBCRowSet
-    (b) CachedRowSet
+    (a) JDBCRowSet (After retrieve data connection still active)
+    (b) CachedRowSet (After retrieve data connection is off or Lost)
         => WebRowSet
             (i) FilteredRowSet
             (ii) JoinRowSet
@@ -62,6 +67,46 @@ Following are the interfaces extended from RowSet:
  */
 public class RowSet_Demo {
     public static void main(String[] args) {
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver"); //We can load the Driver Manually
+            RowSetFactory rsf = RowSetProvider.newFactory(); // Implemented Object of RowSetFactory
 
+            Scanner sc = new Scanner(System.in);
+            System.out.println("-------Choice-------");
+            System.out.println("1. JDBC RowSet \n2. CacheRowSet");
+            System.out.println("Enter the choice: ");
+            int choice = Integer.parseInt(sc.nextLine());
+            switch (choice){
+                case 1:
+                    JdbcRowSet jsf = rsf.createJdbcRowSet(); // Implemented Object of jdbcRowSet
+                    jsf.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
+                    jsf.setUsername("MYDB");
+                    jsf.setPassword("MYDB");
+                    jsf.setCommand("select * from Product45");
+                    jsf.execute();
+                    while (jsf.next()){
+                        System.out.println(jsf.getString(1)+"\t"+jsf.getString(2)+"\t"+jsf.getFloat(3)+"\t"+jsf.getInt(4));
+                    }
+                    break;
+                case 2:
+                    CachedRowSet crs = rsf.createCachedRowSet();// // Implemented Object of CachedRowSet
+                    crs.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
+                    crs.setUsername("MYDB");
+                    crs.setPassword("MYDB");
+                    crs.setCommand("select * from Bank45");
+                    crs.execute();
+                    while (crs.next()){
+                        System.out.println(crs.getInt(1)+"\t"+
+                                crs.getString(2)+"\t"+
+                                crs.getFloat(3)+"\t"+
+                                crs.getString(4));
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid Choice!!!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
