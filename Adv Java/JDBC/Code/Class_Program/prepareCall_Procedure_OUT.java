@@ -77,7 +77,7 @@ public class prepareCall_Procedure_OUT {
             define registerOutParameter() method?
                 =>This registerOutParameter() method specify the type of value to be recorded to the fields of CallableStatement object in OUT-Parameter procedure.
              */
-            cs.setLong(1, acNo); // Account Number
+            cs.setLong(1,  acNo); // Account Number
             cs.registerOutParameter(2, Types.VARCHAR); // custname
             cs.registerOutParameter(3, Types.FLOAT);   // balance
             cs.registerOutParameter(4, Types.VARCHAR); // acctype
