@@ -59,8 +59,7 @@ public class Batch_Processing {
         //Case 2 - Batch Processing using Prepare Statement(In data base one table with multiple value)
         try {
             Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","MYDB","MYDB");
-            PreparedStatement ps = con.prepareStatement
-                    ("insert into product45 values(?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into product45 values(?,?,?,?)");
             ps.setString(1,"P007");
             ps.setString(2,"TRY");
             ps.setFloat(3,2233);
