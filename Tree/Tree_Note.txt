@@ -1,0 +1,13 @@
+Why Used Tree?
+    1 - For Insert and Delete is o(log N) time.(Tree should be "Self Balance Binary Tree")
+    2 - Order Storage (Means all lest node are smaller node and all right node are bigger node).
+    3 - Cost Efficeint (Means auto sorted).
+
+Where it is used?
+    - File System.
+    - Database.
+    - Algorithm/NetworkRouting.
+    - Math.
+    - DTS(ML).
+    - Compress File.
+    - Future Data Structure.
