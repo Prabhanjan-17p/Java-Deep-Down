@@ -1,4 +1,4 @@
-package LinkedList;
+package List.LinkedList;
 
 public class CreateCustomLinkedList {
     public static void main(String[] args) {

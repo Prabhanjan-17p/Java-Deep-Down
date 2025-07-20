@@ -223,35 +223,36 @@ package List.ArrayList;
 import java.util.*;
 
 /**
- * ✅ What is ArrayList?
- * -------------------------------
- * ArrayList is a resizable array implementation of the List interface in Java.
- * It allows dynamic storage, duplicate elements, maintains insertion order, and supports index-based access.
  *
- * ✅ Key Features:
- * - Dynamic size: expands automatically as you add elements
- * - Allows duplicate values
- * - Maintains insertion order
- * - Fast random access via index (like array)
- *
- * ✅ Benefits:
- * - Easy to use for ordered collections
- * - Provides many helpful methods (`add`, `get`, `remove`, `contains`, `sort`, etc.)
- * - More flexible than arrays (no need to know size in advance)
+     * ✅ What is ArrayList?
+     * -------------------------------
+         * ArrayList is a resizable array implementation of the List interface in Java.
+         * It allows dynamic storage, duplicate elements, maintains insertion order, and supports index-based access.
+     *
+     * ✅ Key Features:
+         * - Dynamic size: expands automatically as you add elements
+         * - Allows duplicate values
+         * - Maintains insertion order
+         * - Fast random access via index (like array)
+     *
+     * ✅ Benefits:
+         * - Easy to use for ordered collections
+         * - Provides many helpful methods (`add`, `get`, `remove`, `contains`, `sort`, etc.)
+         * - More flexible than arrays (no need to know size in advance)
 
- * ✅ Common Problems & Solutions:
- * ----------------------------------------------------------------------
- * ❌ Problem: Slower performance when inserting/removing in the middle
- * ✅ Solution: Use LinkedList if frequent insert/delete from middle is needed
+     * ✅ Common Problems & Solutions:
+     * ----------------------------------------------------------------------
+         * ❌ Problem: Slower performance when inserting/removing in the middle
+         * ✅ Solution: Use LinkedList if frequent insert/delete from middle is needed
 
- * ❌ Problem: Not thread-safe
- * ✅ Solution: Use Collections.synchronizedList(new ArrayList<>()) or CopyOnWriteArrayList
+         * ❌ Problem: Not thread-safe
+         * ✅ Solution: Use Collections.synchronizedList(new ArrayList<>()) or CopyOnWriteArrayList
 
- * ❌ Problem: Capacity increases in chunks (overhead)
- * ✅ Solution: Call `trimToSize()` after large removals to free memory
+         * ❌ Problem: Capacity increases in chunks (overhead)
+         * ✅ Solution: Call `trimToSize()` after large removals to free memory
 
- * ❌ Problem: Cannot modify immutable lists (`List.of(...)`)
- * ✅ Solution: Use `new ArrayList<>(List.of(...))` for mutability
+         * ❌ Problem: Cannot modify immutable lists (`List.of(...)`)
+         * ✅ Solution: Use `new ArrayList<>(List.of(...))` for mutability
  */
 
 class Student implements Comparable<Student> {
