@@ -1,5 +1,3 @@
-package List.ArrayList;
-
 import java.util.*;
 
 //public class Test implements Comparator<StudentEn> {
