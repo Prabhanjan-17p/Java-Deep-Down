@@ -34,7 +34,8 @@ public class DuplicateLetterCounter {
 
         String se = "PraPvanjanAmanta";
 
-        Map<String, Long> mm = Arrays.stream(se.toLowerCase().split("")).collect(Collectors.groupingBy(x -> x,Collectors.counting()));
+        Map<String, Long> mm = Arrays.stream(se.toLowerCase().split(""))
+                .collect(Collectors.groupingBy(x -> x,Collectors.counting()));
 
 
         for(Map.Entry<String, Long> x : mm.entrySet()){
