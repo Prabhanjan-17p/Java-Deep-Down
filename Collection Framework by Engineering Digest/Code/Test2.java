@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Test2 {
@@ -14,6 +12,8 @@ public class Test2 {
                 System.out.println(v.getKey()+" :: "+v.getValue());
             }
         }
+
+
 
 
         //Least Frequency

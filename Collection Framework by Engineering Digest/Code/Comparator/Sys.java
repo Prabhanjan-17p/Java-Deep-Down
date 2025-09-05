@@ -7,21 +7,21 @@ import java.util.Objects;
 
 public class Sys {
     public static void main(String[] args) {
-//        LinkedList<Emp> emps = new LinkedList<>(Arrays.asList(
-//                new Emp("hari", 12000, "IT"),
-//                new Emp("amir", 1000, "CS"),
-//                new Emp("kanha", 82000, "IT"),
-//                new Emp("rahul", 82000, "IT"),
-//                new Emp("amit", 82000, "CS")
-//        ));
-//
-//        // Sort using Comparator defined in Emp class
-//        emps.sort(new Emp());
-//
-//        // Print sorted employees
-//        for (Emp emp : emps) {
-//            System.out.println(emp);
-//        }
+        LinkedList<Emp> emps = new LinkedList<>(Arrays.asList(
+                new Emp("hari", 12000, "IT"),
+                new Emp("amir", 1000, "CS"),
+                new Emp("kanha", 82000, "IT"),
+                new Emp("rahul", 82000, "IT"),
+                new Emp("amit", 82000, "CS")
+        ));
+
+        // Sort using Comparator defined in Emp class
+        emps.sort(new Emp());
+
+        // Print sorted employees
+        for (Emp emp : emps) {
+            System.out.println(emp);
+        }
 
 
 

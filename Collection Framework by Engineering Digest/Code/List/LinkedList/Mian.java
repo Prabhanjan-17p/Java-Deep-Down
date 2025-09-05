@@ -1,5 +1,6 @@
 package List.LinkedList;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Mian {
@@ -52,6 +53,7 @@ public class Mian {
         linkedList.add(1);
         linkedList.add(2);
         linkedList.add(3);
+//        linkedList.add(2,2223);
         System.out.println(linkedList.get(2)); // Find the value according to the index (O(n) time)
 
         linkedList.addFirst(0); // Time complexity is O(1)
@@ -70,9 +72,9 @@ public class Mian {
          * Useful to filter out common elements between two lists.
          */
 
-//        LinkedList<String> animal = new LinkedList<>(Arrays.asList("cat", "dog", "elephant"));
-//        LinkedList<String> animalToRemove = new LinkedList<>(Arrays.asList("dog", "Lion"));
-//        animal.removeAll(animalToRemove);
-//        System.out.println(animal); // Output: [cat, elephant]
+        LinkedList<String> animal = new LinkedList<>(Arrays.asList("cat", "dog", "elephant"));
+        LinkedList<String> animalToRemove = new LinkedList<>(Arrays.asList("dog", "Lion"));
+        animal.removeAll(animalToRemove);
+        System.out.println(animal); // Output: [cat, elephant]
     }
 }

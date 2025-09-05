@@ -67,7 +67,7 @@ public class Main {
         for (String l : list) {
             System.out.println(l);
             if (l.equals("Mango")) {
-                list.add("Kaju"); // This is safe in CopyOnWriteArrayList
+                list.add("Kaju"); // This is safe in CopyOnWriteArrayList //copy at that point
                 System.out.println("One item added...");
             }
         }

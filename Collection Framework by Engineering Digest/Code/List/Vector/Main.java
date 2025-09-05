@@ -52,12 +52,12 @@ public class Main {
 
         // ---------- Constructors and Capacity Demo ----------
         Vector<Integer> vector1 = new Vector<>();
-        vector1.add(9);
-        vector1.add(8);
-        vector1.add(7);
+        vector1.add(1);
+        vector1.add(2);
+        vector1.add(3);
         vector1.add(7);
         System.out.println(vector1.capacity()); // Default capacity = 10
-        System.out.println(vector1);
+        System.out.println("content "+vector1);
 
         Vector<Integer> vector = new Vector<>(2); // Custom initial capacity = 2
         vector.add(12);

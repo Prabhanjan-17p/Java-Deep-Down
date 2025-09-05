@@ -45,10 +45,10 @@ public class Main {
         System.out.println(map);
 
         //remove
-        map.remove(3); // remove the key 3
+//        map.remove(3); // remove the key 3
         System.out.println(map);
-//        map.remove(3,"Hari"); // it not remove both key and value are here then it will be remove
-        boolean checkRemove = map.remove(3, "Hari");
+//        map.remove(3,"Hari"); // It will remove the entry only if the key exists and is currently mapped to the given value.
+        boolean checkRemove = map.remove(3, "KANHA");
         System.out.println("Removed ? : "+checkRemove);
         System.out.println(map);
 

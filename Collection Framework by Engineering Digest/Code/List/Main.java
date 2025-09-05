@@ -25,11 +25,16 @@ public class Main {
 
         // ✅ Access elements
         System.out.println("First fruit: " + fruits.get(0));
+        System.out.println(fruits);
+
+        System.out.println();
+
 
         // ✅ Iterate
         System.out.println("All fruits:");
         for (String fruit : fruits) {
             System.out.println(fruit);
+            fruits.add("sdfghj");
         }
 
         // ✅ Remove element
