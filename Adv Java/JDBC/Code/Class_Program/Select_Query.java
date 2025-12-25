@@ -14,7 +14,8 @@ public class Select_Query {
             String pCode = sc.nextLine();
             Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","MYDB","MYDB");
             Statement stm = con.createStatement();
-            ResultSet res = stm.executeQuery("select * from Product45 where PCODE = '"+pCode+"'");
+//            ResultSet res = stm.executeQuery("select * from Product45 where PCODE = '"+pCode+"'");
+            ResultSet res = stm.executeQuery("select * from Product45 ");
 
             if (res.next() == false) {
                 System.out.println("Please provide a valid code!!!");
